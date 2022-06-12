@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -12,9 +10,7 @@ import 'ui/index.dart';
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
-  if (!Platform.isMacOS) {
-    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  }
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   runApp(MyApp());
 }
@@ -30,10 +26,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-        create: (context) => ChatsCubit(
-          cacheService: cacheService,
-          remoteService: remoteService,
-        ),
+        create: (context) {
+          return ChatsCubit(
+            cacheService: cacheService,
+            remoteService: remoteService,
+          );
+        },
         child: ChatsScreen(key: Keys.chatScreen),
       ),
     );
