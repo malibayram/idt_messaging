@@ -6,6 +6,7 @@ import '../../../res/index.dart';
 import '../../index.dart';
 
 class ChatHttpService implements ChatRepository {
+  final strings = Resources.of().strings;
   @override
   Future<List<Chat>> getChats() async {
     try {
@@ -13,7 +14,10 @@ class ChatHttpService implements ChatRepository {
 
       if (response.statusCode != 200) {
         throw Exception(
-          "Failed to connect: ${Uris.chatsUri} status code: ${response.statusCode}",
+          strings.failedToConnectWithStatusCode(
+            Uris.chatsUri.toString(),
+            response.statusCode,
+          ),
         );
       } else {
         // There is a format arror in response of the server
@@ -26,7 +30,7 @@ class ChatHttpService implements ChatRepository {
         return <Chat>[...jsonRes.cast<Map>().map(Chat.fromJson)];
       }
     } catch (e) {
-      throw Exception("Failed to connect: ${Uris.chatsUri} error: $e");
+      throw Exception(strings.failedToConnect(Uris.chatsUri.toString(), e));
     }
   }
 }

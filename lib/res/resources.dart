@@ -5,13 +5,18 @@ import 'dimentions/dimensions.dart';
 import 'strings/strings.dart';
 
 class Resources {
-  final BuildContext _context;
+  final BuildContext? _context;
 
-  const Resources(this._context);
+  const Resources([this._context]);
 
   Strings get strings {
-    // It could be from the user preferences or even from the current locale
-    final locale = Localizations.localeOf(_context);
+    late final Locale locale;
+    if (_context != null) {
+      // It could be from the user preferences or even from the current locale
+      locale = Localizations.localeOf(_context!);
+    } else {
+      locale = const Locale('en');
+    }
 
     switch (locale.languageCode) {
       case 'tr':
@@ -31,7 +36,7 @@ class Resources {
     return AppDimension();
   }
 
-  static Resources of(BuildContext context) {
+  static Resources of([BuildContext? context]) {
     return Resources(context);
   }
 }

@@ -5,4 +5,7 @@ part 'turkish_strings.dart';
 abstract class Strings {
   String get chatsScreen;
   String get messagesScreen;
+
+  String failedToConnect(String url, Object e);
+  String failedToConnectWithStatusCode(String url, int statusCode);
 }

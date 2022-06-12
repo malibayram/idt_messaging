@@ -6,6 +6,8 @@ import '../../../res/index.dart';
 import '../../index.dart';
 
 class MessageHttpService implements MessageRepository {
+  final strings = Resources.of().strings;
+
   @override
   Future<List<Message>> getMessages(final String chatId) async {
     try {
@@ -13,7 +15,10 @@ class MessageHttpService implements MessageRepository {
 
       if (response.statusCode != 200) {
         throw Exception(
-          "Failed to connect: ${Uris.messageUri(chatId)} status code: ${response.statusCode}",
+          strings.failedToConnectWithStatusCode(
+            Uris.chatsUri.toString(),
+            response.statusCode,
+          ),
         );
       } else {
         final fixedResponse = response.body.replaceAll('},]', "}]");
@@ -23,9 +28,7 @@ class MessageHttpService implements MessageRepository {
         return <Message>[...jsonRes.cast<Map>().map(Message.fromJson)];
       }
     } catch (e) {
-      throw Exception(
-        "Failed to connect: ${Uris.messageUri(chatId)} error: $e",
-      );
+      throw Exception(strings.failedToConnect(Uris.chatsUri.toString(), e));
     }
   }
 }
