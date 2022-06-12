@@ -47,6 +47,7 @@ class ChatsScreen extends StatelessWidget {
                               create: (context) => MessagesCubit(
                                 cacheService: cacheService,
                                 remoteService: remoteService,
+                                chatId: chat.id,
                               ),
                               child: MessagesScreen(chat: chat),
                             );

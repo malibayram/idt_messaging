@@ -1,6 +1,8 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../domain/index.dart';
 
@@ -10,19 +12,22 @@ class MessagesCubit extends Cubit<MessagesState> {
   MessagesCubit({
     required this.cacheService,
     required this.remoteService,
+    required this.chatId,
   }) : super(MessagesInitial());
 
   final MessagesCacheRepository cacheService;
   final MessagesRemoteRepository remoteService;
+  final String chatId;
+  final localMessages = <Message>[];
 
-  Future<void> getMessages(final String chatId) async {
+  Future<void> getMessages() async {
     emit(const MessagesLoading());
 
     int lastCachedMessageTimestamp = 0;
     Exception? exception;
 
     try {
-      final localMessages = await cacheService.getMessages(chatId);
+      localMessages.addAll(await cacheService.getMessages(chatId));
 
       if (localMessages.isNotEmpty) {
         localMessages.sort();
@@ -41,7 +46,7 @@ class MessagesCubit extends Cubit<MessagesState> {
 
       await cacheService.saveMessages(remoteMessages);
 
-      final localMessages = await cacheService.getMessages(chatId);
+      localMessages.addAll(await cacheService.getMessages(chatId));
 
       if (!isClosed) emit(MessagesLoaded(localMessages));
     } on Exception catch (e) {
@@ -49,5 +54,25 @@ class MessagesCubit extends Cubit<MessagesState> {
     }
 
     if (exception != null && !isClosed) emit(MessagesLoadingFailed(exception));
+  }
+
+  Future<void> sendMessage(final Message message) async {
+    localMessages.add(message);
+
+    emit(const MessagesLoading());
+    emit(MessagesLoaded(localMessages));
+
+    try {
+      await Future.delayed(
+          Duration(milliseconds: 500 + Random().nextInt(1000)));
+      final m = await remoteService.getRandomMessage();
+      localMessages.add(m);
+      if (!isClosed) {
+        emit(const MessagesLoading());
+        emit(MessagesLoaded(localMessages));
+      }
+    } catch (e) {
+      debugPrint("$e");
+    }
   }
 }

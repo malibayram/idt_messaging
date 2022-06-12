@@ -10,6 +10,7 @@ void main() {
   final messagesCubit = MessagesCubit(
     cacheService: cacheService,
     remoteService: remoteService,
+    chatId: "9991",
   );
 
   List<Message> remoteMessagees = [];
@@ -29,7 +30,7 @@ void main() {
       'When getMessages method called '
       'should messages on server be loaded',
       build: () => messagesCubit,
-      act: (bloc) => bloc.getMessages("9991"),
+      act: (bloc) => bloc.getMessages(),
       wait: const Duration(seconds: 2),
       expect: () {
         return [const MessagesLoading(), MessagesLoaded(remoteMessagees)];

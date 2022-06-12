@@ -27,3 +27,5 @@ Test case app for IDT Messaging interview
 10. UI is completed
     - Chats screen ui is created
     - Messages screen ui is created
+    - Send message part is completed
+11. Random message sender is written

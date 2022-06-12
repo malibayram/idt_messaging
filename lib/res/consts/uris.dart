@@ -22,4 +22,10 @@ class Uris {
       ],
     );
   }
+
+  static final randomMessageUri = Uri(
+    scheme: "https",
+    host: "api.quotable.io",
+    pathSegments: ["random"],
+  );
 }

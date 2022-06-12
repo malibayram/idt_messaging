@@ -13,6 +13,7 @@ class MessagesScreen extends StatelessWidget {
   final Chat chat;
 
   final dimension = Resources.of().dimension;
+  final _controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,15 +62,20 @@ class MessagesScreen extends StatelessWidget {
         child: BlocBuilder<MessagesCubit, MessagesState>(
           builder: (context, state) {
             if (state is MessagesInitial) {
-              context.read<MessagesCubit>().getMessages(chat.id);
+              context.read<MessagesCubit>().getMessages();
             }
             if (state is MessagesLoadingFailed) {
               return Text("${state.exception}");
             } else if (state is MessagesLoaded) {
+              Future.delayed(const Duration(milliseconds: 50)).whenComplete(() {
+                _controller.jumpTo(_controller.position.maxScrollExtent);
+              });
+
               return Column(
                 children: [
                   Expanded(
                     child: ListView(
+                      controller: _controller,
                       children: [
                         for (final message in state.messages)
                           TextMessage(message: message)
@@ -80,6 +86,7 @@ class MessagesScreen extends StatelessWidget {
                 ],
               );
             }
+
             return const CircularProgressIndicator();
           },
         ),

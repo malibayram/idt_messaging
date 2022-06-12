@@ -1,4 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:idt_messaging/blocs/index.dart';
+import 'package:idt_messaging/domain/index.dart';
 
 import '../../../../res/index.dart';
 
@@ -69,7 +74,18 @@ class ChatInputField extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                if (textEditCtrlr.text.isNotEmpty) {}
+                if (textEditCtrlr.text.isNotEmpty) {
+                  final rId = 9000 + Random().nextInt(1000);
+                  final message = Message(
+                    id: "$rId",
+                    message: textEditCtrlr.text,
+                    modifiedAt: DateTime.now().millisecondsSinceEpoch,
+                    sender: "me",
+                  );
+                  textEditCtrlr.text = "";
+
+                  context.read<MessagesCubit>().sendMessage(message);
+                }
               },
               icon: const Icon(Icons.send),
             ),

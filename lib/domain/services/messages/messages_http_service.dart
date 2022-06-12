@@ -31,4 +31,34 @@ class MessagesHttpService implements MessagesRemoteRepository {
       throw Exception(strings.failedToConnect(Uris.chatsUri.toString(), e));
     }
   }
+
+  @override
+  Future<Message> getRandomMessage() async {
+    try {
+      final response = await http.get(Uris.randomMessageUri);
+
+      if (response.statusCode == 200) {
+        final jsonRes = jsonDecode(response.body);
+
+        final message = Message(
+          id: jsonRes['_id'],
+          message: jsonRes['content'],
+          modifiedAt: DateTime.now().millisecondsSinceEpoch,
+          sender: jsonRes['author'],
+        );
+        return message;
+      } else {
+        throw Exception(
+          strings.failedToConnectWithStatusCode(
+            Uris.randomMessageUri.toString(),
+            response.statusCode,
+          ),
+        );
+      }
+    } catch (e) {
+      throw Exception(
+        strings.failedToConnect(Uris.randomMessageUri.toString(), e),
+      );
+    }
+  }
 }
