@@ -4,6 +4,24 @@ Test case app for IDT Messaging interview
 
 ## Test: ![coverage](coverage_badge.svg)
 
+## Similar apps written by me:
+
+- https://drive.google.com/file/d/1z3-xW5EpezMGL1talS-cCZGJE-SLkEyl/view?usp=sharing
+  - Still under development.
+  - Using Firebase as backend services
+  - Using peer to peer for direct connection and calls
+  - Using https://pub.dev/packages/flutter_webrtc for peer to peer connection
+  - There are two 2 messaging:
+    - First is using Firebase as backend and stored on the server
+    - Second is using encryption and direct connection without using any server connection and storing users device
+- https://play.google.com/store/apps/details?id=dershub.senv2yayin
+  - One of the fist app has written with Flutter in Turkey I started to write it with Fluttter about 2018
+  - Has been using by above 20.000 users
+  - Chat part includes:
+    - Group chatting
+    - Sending several attachment types; docs, images, videos
+    - Creating polls
+
 ### Development Steps
 
 1. Create models for data
