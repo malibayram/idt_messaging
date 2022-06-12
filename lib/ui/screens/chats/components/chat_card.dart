@@ -27,7 +27,7 @@ class ChatCard extends StatelessWidget {
                 CircleAvatar(
                   radius: 24,
                   child: Text(
-                    chat.topic.substring(0, 2),
+                    chat.topic.substring(0, 2).toUpperCase(),
                     style: TextStyle(fontSize: dimension.bigText),
                   ),
                 ),

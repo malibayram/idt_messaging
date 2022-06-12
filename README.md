@@ -26,3 +26,4 @@ Test case app for IDT Messaging interview
    - App visible name is renamed to IDT Messaging
 10. UI is completed
     - Chats screen ui is created
+    - Messages screen ui is created
