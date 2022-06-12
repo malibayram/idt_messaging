@@ -1,4 +1,4 @@
-export 'chat/chat_hive_service.dart';
-export 'chat/chat_http_service.dart';
-export 'message/message_hive_service.dart';
-export 'message/message_http_service.dart';
+export 'chats/chats_hive_service.dart';
+export 'chats/chats_http_service.dart';
+export 'messages/messages_hive_service.dart';
+export 'messages/messages_http_service.dart';

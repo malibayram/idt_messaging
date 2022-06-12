@@ -1,4 +1,6 @@
-class Chat {
+import 'package:equatable/equatable.dart';
+
+class Chat extends Equatable {
   // Put constructor to top => https://github.com/flutter/flutter/issues/1220#issuecomment-172157484
   Chat({
     required this.id,
@@ -44,11 +46,6 @@ class Chat {
     );
   }
 
-  /// if the ids of instances are the same I assume both of the instance are equal
-  /// if I need to deep comparition between instances I can add other properties here
   @override
-  // ignore: hash_and_equals
-  bool operator ==(Object other) {
-    return other is Chat && other.id == id;
-  }
+  List<Object?> get props => [id, lastMessage, members, topic, modifiedAt];
 }

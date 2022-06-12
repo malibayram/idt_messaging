@@ -17,7 +17,7 @@ void main() {
         chat = Chat(
           id: "",
           lastMessage: "How about tomorrow then?",
-          members: ["John", "Daniel", "Rachel"],
+          members: const ["John", "Daniel", "Rachel"],
           topic: "pizza night",
           modifiedAt: 1599814026153,
         );
@@ -32,7 +32,7 @@ void main() {
     final instance = Chat(
       id: "9991",
       lastMessage: "How about tomorrow then?",
-      members: ["John", "Daniel", "Rachel"],
+      members: const ["John", "Daniel", "Rachel"],
       topic: "pizza night",
       modifiedAt: 1599814026153,
     );

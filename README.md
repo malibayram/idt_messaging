@@ -24,3 +24,4 @@ Test case app for IDT Messaging interview
 7. Repositories for data are created
    - Services those provide the data are written
    - Test for services are written
+8. Bloc

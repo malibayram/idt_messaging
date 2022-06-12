@@ -1,4 +1,6 @@
-class Message {
+import 'package:equatable/equatable.dart';
+
+class Message extends Equatable {
   Message({
     required this.id,
     required this.message,
@@ -38,9 +40,7 @@ class Message {
     );
   }
 
+  // Since the sender can not be modified, we don't need to add it to the comparision's list
   @override
-  // ignore: hash_and_equals
-  bool operator ==(Object other) {
-    return other is Message && other.id == id;
-  }
+  List<Object?> get props => [id, message, modifiedAt];
 }
