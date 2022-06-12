@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="102" height="20">
-    <linearGradient id="b" x2="0" y2="61.46%">
+    <linearGradient id="b" x2="0" y2="51.74%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1" />
         <stop offset="1" stop-opacity=".1" />
     </linearGradient>
@@ -14,7 +14,7 @@
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
         <text x="305" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="490">coverage</text>
         <text x="305" y="140" transform="scale(.1)" textLength="490">coverage</text>
-        <text x="795" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="390">61.46%</text>
-        <text x="795" y="140" transform="scale(.1)" textLength="390">61.46%</text>
+        <text x="795" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="390">51.74%</text>
+        <text x="795" y="140" transform="scale(.1)" textLength="390">51.74%</text>
     </g>
 </svg>

@@ -1,2 +1,2 @@
-export 'consts/uris.dart';
+export 'consts/index.dart';
 export 'resources.dart';

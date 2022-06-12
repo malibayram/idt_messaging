@@ -15,20 +15,23 @@ class AppColors implements BaseColors {
   };
 
   @override
-  MaterialColor get colorAccent => Colors.amber;
+  MaterialColor get accent => Colors.amber;
 
   @override
-  MaterialColor get colorPrimary => MaterialColor(0xff1686ce, _primary);
+  MaterialColor get primary => MaterialColor(0xff1686ce, _primary);
 
   @override
-  Color get colorPrimaryText => const Color(0xff49ABFF);
+  Color get primaryText => const Color(0xff49ABFF);
 
   @override
-  Color get colorSecondaryText => const Color(0xff3593FF);
+  Color get secondaryText => const Color(0xff3593FF);
 
   @override
-  Color get colorWhite => const Color(0xffffffff);
+  Color get white => const Color(0xffffffff);
 
   @override
-  Color get colorBlack => const Color(0xff000000);
+  Color get black => const Color(0xff000000);
+
+  @override
+  Color get green => const Color(0xFF00BF6D);
 }

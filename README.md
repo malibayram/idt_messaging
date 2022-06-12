@@ -24,3 +24,5 @@ Test case app for IDT Messaging interview
    - Cubits and their tests are written
 9. Native splash screen and app icons added
    - App visible name is renamed to IDT Messaging
+10. UI is completed
+    - Chats screen ui is created
