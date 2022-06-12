@@ -7,15 +7,11 @@ Test case app for IDT Messaging interview
 ### Development Steps
 
 1. Create models for data
-
    - Chat model
    - Message model
-
 2. Write unit tests for models
-
    - Chat model
    - Message model
-
 3. Test coverage badge and test analyze script created
 4. Running tests and making test coverage analyze before every commit set up with git hooks
 5. Github workflow created to build and deploy web version of the app to Firebase hosting on every push
@@ -24,4 +20,7 @@ Test case app for IDT Messaging interview
 7. Repositories for data are created
    - Services those provide the data are written
    - Test for services are written
-8. Bloc
+8. Blocs for messages and chats are created
+   - Cubits and their tests are written
+9. Native splash screen and app icons added
+   - App visible name is renamed to IDT Messaging
