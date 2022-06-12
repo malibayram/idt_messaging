@@ -1,5 +1,5 @@
 class Uris {
-  static const _hostName = "idtm-media.s3.amazonaws.com/";
+  static const _hostName = "idtm-media.s3.amazonaws.com";
 
   static final chatsUri = Uri(
     scheme: "https",
